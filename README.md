@@ -144,3 +144,15 @@ The selected XGBoost model was exported (likely as a `.pkl` or `.joblib` file) a
 
 **(Screenshots)**
 *(Consider checking the test_images folder)*
+
+### Implementation
+*   Download the project and unzip it
+*   Access the deployment/ folder
+*   Activate the virtual environment
+```bash
+...deployment> venv\Scripts\activate
+```
+*   Run the application
+```bash
+...deployment> python app.py to
+```
