@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>ML.Tech - Churn Prediction</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{{ url_for('static', filename='img/logo.png') }}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Ubuntu:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{{ url_for('static', filename='lib/animate/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Hero Start -->
+    <div class="container-fluid pt-5 bg-primary hero-header">
+        <div class="container pt-5">
+            <div class="row g-5 pt-5">
+                <div class="col-lg-6 align-self-center text-center text-lg-start mb-lg-5">
+                    <h1 class="display-4 text-white mb-4 animated slideInRight">XGBoost model</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+
+   <!-- Form -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 500px;">
+            <h1 class="mb-4">To Churn or Not to Churn, that is the question!</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <p class="text-center mb-4">Please fill in the form and your answer will be provided within a few minutes.</p>
+                <div class="wow fadeIn" data-wow-delay="0.3s">
+                    <form id="predictionForm">
+                        <div class="row g-3">
+
+                    
+
+                            <!-- International Plan -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select" id="international_plan" name="international_plan" required>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                    <label for="international_plan">International Plan</label>
+                                </div>
+                            </div>
+
+                            <!-- Voice mail plan -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select" id="voice_mail_plan" name="voice_mail_plan" required>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                    <label for="voice_mail_plan">Voice mail Plan</label>
+                                </div>
+                            </div>
+                            <!-- Avg Intl Duration -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" step="any" class="form-control" id="avg_intl_duration" name="avg_intl_duration" placeholder="Avg Intl Duration" required>
+                                    <label for="avg_intl_duration">Avg International Duration</label>
+                                </div>
+                            </div>
+
+                            <!-- Total Day Minutes -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" step="any" class="form-control" id="total_day_minutes" name="total_day_minutes" placeholder="Total Day Minutes" required>
+                                    <label for="total_day_minutes">Total Day Minutes</label>
+                                </div>
+                            </div>
+
+                            <!-- Total Evening Minutes -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" step="any" class="form-control" id="total_eve_minutes" name="total_eve_minutes" placeholder="Total Evening Minutes" required>
+                                    <label for="total_eve_minutes">Total Evening Minutes</label>
+                                </div>
+                            </div>
+
+                            <!-- Total Night Minutes -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" step="any" class="form-control" id="total_night_minutes" name="total_night_minutes" placeholder="Total Night Minutes" required>
+                                    <label for="total_night_minutes">Total Night Minutes</label>
+                                </div>
+                            </div>
+
+                            <!-- Total International Minutes -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" step="any" class="form-control" id="total_intl_minutes" name="total_intl_minutes" placeholder="Total International Minutes" required>
+                                    <label for="total_intl_minutes">Total International Minutes</label>
+                                </div>
+                            </div>
+
+                            <!-- Total International Calls -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="total_intl_calls" name="total_intl_calls" placeholder="Total International Calls" required>
+                                    <label for="total_intl_calls">Total International Calls</label>
+                                </div>
+                            </div>
+
+                            <!-- Customer Service Calls -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="customer_service_calls" name="customer_service_calls" placeholder="Customer Service Calls" required>
+                                    <label for="customer_service_calls">Customer Service Calls</label>
+                                </div>
+                            </div>
+
+                            <!-- Account Length -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="account_length" name="account_length" placeholder="Account Length" required>
+                                    <label for="account_length">Account Length</label>
+                                </div>
+                            </div>
+
+                            <!-- Total Day Calls -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="total_day_calls" name="total_day_calls" placeholder="Total Day Calls" required>
+                                    <label for="total_day_calls">Total Day Calls</label>
+                                </div>
+                            </div>
+
+                            <!-- Total Night Calls -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="total_night_calls" name="total_night_calls" placeholder="Total Night Calls" required>
+                                    <label for="total_night_calls">Total Night Calls</label>
+                                </div>
+                            </div>
+
+                            <!-- Total Evening Calls -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="total_eve_calls" name="total_eve_calls" placeholder="Total Evening Calls" required>
+                                    <label for="total_eve_calls">Total Evening Calls</label>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="submit">Predict</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Bind the form submission using AJAX
+    document.getElementById("predictionForm").addEventListener("submit", function(event) {
+        event.preventDefault();  
+
+        var formData = new FormData(this);  
+
+        fetch('/predict', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json()) 
+        .then(data => {
+            Swal.fire({
+                title: data.result,
+                icon: data.result.includes("not churn") ? 'success' : 'warning',
+                confirmButtonText: 'OK'
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire('Oops!', 'Something went wrong!', 'error');
+        });
+    });
+</script>
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top pt-2"><i class="bi bi-arrow-up"></i></a>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='lib/wow/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/easing/easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/counterup/counterup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/owlcarousel/owl.carousel.min.js') }}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

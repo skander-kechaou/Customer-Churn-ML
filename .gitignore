@@ -1,0 +1,14 @@
+# Virtual environments
+venv/
+analysis_venv/
+deployment/venv/
+
+# Add other ignores from previous suggestions too!
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
