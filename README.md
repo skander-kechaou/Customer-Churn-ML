@@ -156,3 +156,4 @@ The selected XGBoost model was exported (likely as a `.pkl` or `.joblib` file) a
 ```bash
 ...deployment> python app.py to
 ```
+*   You can test with the examples in the notebook or with ones from the dataset
