@@ -146,6 +146,6 @@ The selected XGBoost model was exported (likely as a `.pkl` or `.joblib` file) a
 *(Consider adding the screenshots you provided here using Markdown image syntax)*
 
 ```markdown
-![Churn Prediction App - Churn Likely](link/to/your/churn_likely_screenshot.png)
+![Churn Prediction App - Churn Likely](https://github.com/skander-kechaou/Customer-Churn-ML/blob/master/test_images/churn%20case.png)
 ![Churn Prediction App - Input Form](link/to/your/input_form_screenshot.png)
 ![Churn Prediction App - No Churn](link/to/your/no_churn_screenshot.png)
