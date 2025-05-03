@@ -26,14 +26,10 @@ This project focuses on predicting customer churn within the telecom industry us
     *   [Model Selection](#model-selection)
 *   [5. Model Results](#5-model-results)
 *   [6. Deployment](#6-deployment)
-*   [7. Project Structure](#7-project-structure)
-*   [8. Technology Stack](#8-technology-stack)
-*   [9. Getting Started](#9-getting-started)
-    *   [Prerequisites](#prerequisites)
-    *   [Installation](#installation)
-*   [10. Usage](#10-usage)
-*   [11. License](#11-license)
-*   [12. Acknowledgments](#12-acknowledgments)
+*   [7. Technology Stack](#8-technology-stack)
+*   [8. Prerequisites](#9-prerequisites)
+*   [9. Team](#12-team)
+*   [10. Acknowledgments](#12-acknowledgments)
 
 ---
 
@@ -152,8 +148,50 @@ The selected XGBoost model was exported (likely as a `.pkl` or `.joblib` file) a
 ```bash
 ...deployment> venv\Scripts\activate
 ```
+*   Install the requirement
+```bash
+...deployment> pip install -r requirements.txt
+```
 *   Run the application
 ```bash
-...deployment> python app.py to
+...deployment> python app.py
 ```
-*   You can test with the examples in the notebook or with ones from the dataset
+*   Open your web browser and go to the address provided (i.e http://127.0.0.1:5000/)
+*   Fill in the customer details in the web form and click "Predict"
+*   The application will display the churn prediction
+
+## 7. Technology stack
+
+*   Language: Python (3.8+)
+*   Core Libraries:
+   *   Pandas: Data manipulation and loading.
+   *   NumPy: Numerical operations.
+   *   Scikit-learn: Preprocessing, model building (Logistic Regression, KNN, SVM, DT, RF, AdaBoost), evaluation metrics, GridSearchCV.
+   *   XGBoost: For the final XGBoost model.
+   *   Imbalanced-learn: For SMOTE implementation.
+   *   Matplotlib / Seaborn: Data visualization (used during exploration/evaluation).
+   *   Joblib / Pickle: Saving and loading the trained model.
+*   Deployment (Example):
+   *   Flask : Web framework for the prediction app.
+
+## 8. Prerequisites
+
+*   Python (3.8 or higher recommended)
+*   pip (Python package installer)
+*   Git (for cloning the repository)
+*   Virtual Environment tool (like venv or conda)
+
+## 9. Team
+
+*   Donia Ben Othman
+*   Yosr Lassoued
+*   Skander Kechaou
+*   Rania Souei
+*   Arij Mahouechi
+*   Youssef Ressaissi
+
+## 10. Acknowledgment
+
+* Dataset sourced from BigML
+* Reports (which the project was based on) sourced from https://www.sciencedirect.com/
+
