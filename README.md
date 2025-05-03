@@ -1,8 +1,6 @@
 # Customer Churn Prediction for Telecom Industry
 
 [![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) <!-- Choose an appropriate license -->
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](.) <!-- Placeholder -->
 
 This project focuses on predicting customer churn within the telecom industry using machine learning. By analyzing customer demographics, usage patterns, and account information, we aim to identify customers at risk of leaving and understand the key drivers behind churn, ultimately enabling proactive retention strategies.
 
